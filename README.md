@@ -55,4 +55,13 @@ The last two experiments are also executed on the rotated version of Holidays.
   year={2015}
 }
 
+@inproceedings{gordo2016deep,
+  title={Deep image retrieval: Learning global representations for image search},
+  author={Gordo, Albert and Almaz{\'a}n, Jon and Revaud, Jerome and Larlus, Diane},
+  booktitle={European Conference on Computer Vision},
+  pages={241--257},
+  year={2016},
+  organization={Springer}
+}
+
 </pre>
