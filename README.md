@@ -1,8 +1,9 @@
 # keras_rmac_plus
 Keras implementation of R-MAC+ descriptors.
 
-[[paper](https://arxiv.org/pdf/1806.08565.pdf) [[project](http://implab.ce.unipr.it/?page_id=858)]
+[[paper](https://arxiv.org/pdf/1806.08565.pdf)] [[project](http://implab.ce.unipr.it/?page_id=858)]
 
+The image below represents the query phase exeucted for the R-MAC+ descriptors.
 
 ![query phase](http://implab.ce.unipr.it/wp-content/uploads/2018/09/queryImage.png)
 
