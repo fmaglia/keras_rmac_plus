@@ -1,10 +1,10 @@
 # keras_rmac-
 Keras implementation of R-MAC+ descriptors
 
-[[paper](https://arxiv.org/abs/1806.05946)] [[project](http://implab.ce.unipr.it/?page_id=787)] [[poster](http://implab.ce.unipr.it/wp-content/uploads/2018/07/conference_poster_6.pdf)]
+[[paper](https://arxiv.org/pdf/1806.08565.pdf] [[project](http://implab.ce.unipr.it/?page_id=858)]
 
 
-![BoI_overview](https://drive.google.com/open?id=1mQ5lddOQgDvkY20pOL490qdf_mcu6qfI)
+![query phase](https://drive.google.com/open?id=1mQ5lddOQgDvkY20pOL490qdf_mcu6qfI)
 
 ## Prerequisites
 * Keras (> 2.0.0)
