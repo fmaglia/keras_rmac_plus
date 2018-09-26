@@ -36,6 +36,9 @@ Download the datasets and put it into the data folder. Then compile the script f
 | M-R RMAC+ | ResNet50   | 78.88% | 88.63% | 94.63% / 95.58% |
 | M-R RMAC+ with retrieval based on 'db regions' | ResNet50   | 85.39 %   | 91.90%  | 94.37% / 95.87% |
 
+The R-MAC is an our re-implementation of the Tolias et al. 2016 paper, instead M-R RMAC comes from the Gordo et al. 2016 paper.
+The last two experiments are also executed on the rotated version of Holidays.
+
 ## Reference
 
 <pre>@article{magliani2018accurate,
@@ -43,4 +46,13 @@ Download the datasets and put it into the data folder. Then compile the script f
   author={Magliani, Federico and Prati, Andrea},
   journal={arXiv preprint arXiv:1806.08565},
   year={2018}
-}</pre>
+}
+
+@article{tolias2015particular,
+  title={Particular object retrieval with integral max-pooling of CNN activations},
+  author={Tolias, Giorgos and Sicre, Ronan and J{\'e}gou, Herv{\'e}},
+  journal={arXiv preprint arXiv:1511.05879},
+  year={2015}
+}
+
+</pre>
