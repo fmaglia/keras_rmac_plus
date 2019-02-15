@@ -29,7 +29,10 @@ def str_to_class(str):
 def readTraining(dataset, rotated=True, nFiles=0, debug=False):
     if (dataset == 'oxford5k' or dataset == 'paris6k'):
         path = 'data/'+dataset+'/jpg/*.jpg'
-
+    if (dataset == 'Holidays' and rotated==True):
+        path = 'dataset/Holidays/jpg_rotated/Db/*.jpg'
+    elif (dataset == 'Holidays' and rotated==False):
+        path = 'dataset/Holidays/jpg_reduced/Db/*.jpg'
     elif (dataset == 'Flickr1M'):
         path = 'data/Flickr1M/im*/*/*.jpg'
     DbImages = np.sort(glob(path))  #da capire se funziona con Flickr1M
@@ -41,7 +44,12 @@ def readTraining(dataset, rotated=True, nFiles=0, debug=False):
 
 def readTest(dataset, full=False, debug=False):
 	bBox = []
-	if (dataset == 'oxford5k' or dataset == 'paris6k'):
+	if (dataset == 'Holidays'):
+		if (not full): #not rotated
+			path = 'dataset/Holidays/jpg_reduced/query/*.jpg'
+		else:
+			path = 'dataset/Holidays/jpg_rotated/query/*.jpg'
+	elif (dataset == 'oxford5k' or dataset == 'paris6k'):
 		path = 'dataset/' + dataset + '/query'
 		if (not full):
 			path += '_reduced/*.jpg'
