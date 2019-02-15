@@ -21,17 +21,19 @@ base_model = str_to_class(network)(weights='imagenet', include_top=False, input_
 model = Model(inputs=base_model.input, outputs=base_model.get_layer(str(layer)).output)
 
 
-d = ["oxford5k,paris6k"]
+d = ["oxford5k","paris6k","holidays"]
 for dataset in d:
     elif (dataset == 'oxford5k'):
         topResultsQE = 8
     elif (dataset == "paris6k"):
         topResultsQE = 6
+    elif (dataset == "holidays"):
+        topResultsQE = 1
 
     print("-------------------------------------------------")
     print('Parameters')
     print('Dataset: ' + str(dataset))
-    if (dataset=="paris6k"):
+    if (dataset=="paris6k" or dataset=="holidays"):
         datasetPCA = 'oxford5k'
     elif (dataset=="oxford5k"):
         datasetPCA = "paris6k"
