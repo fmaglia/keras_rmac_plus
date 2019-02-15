@@ -29,10 +29,10 @@ def str_to_class(str):
 def readTraining(dataset, rotated=True, nFiles=0, debug=False):
     if (dataset == 'oxford5k' or dataset == 'paris6k'):
         path = 'data/'+dataset+'/jpg/*.jpg'
-    if (dataset == 'Holidays' and rotated==True):
-        path = 'dataset/Holidays/jpg_rotated/Db/*.jpg'
-    elif (dataset == 'Holidays' and rotated==False):
-        path = 'dataset/Holidays/jpg_reduced/Db/*.jpg'
+    if (dataset == 'holidays' and rotated==True):
+        path = 'dataset/holidays/jpg_rotated/Db/*.jpg'
+    elif (dataset == 'holidays' and rotated==False):
+        path = 'dataset/holidays/jpg_reduced/Db/*.jpg'
     elif (dataset == 'Flickr1M'):
         path = 'data/Flickr1M/im*/*/*.jpg'
     DbImages = np.sort(glob(path))  #da capire se funziona con Flickr1M
@@ -44,11 +44,11 @@ def readTraining(dataset, rotated=True, nFiles=0, debug=False):
 
 def readTest(dataset, full=False, debug=False):
 	bBox = []
-	if (dataset == 'Holidays'):
+	if (dataset == 'holidays'):
 		if (not full): #not rotated
-			path = 'dataset/Holidays/jpg_reduced/query/*.jpg'
+			path = 'dataset/holidays/jpg_reduced/query/*.jpg'
 		else:
-			path = 'dataset/Holidays/jpg_rotated/query/*.jpg'
+			path = 'dataset/holidays/jpg_rotated/query/*.jpg'
 	elif (dataset == 'oxford5k' or dataset == 'paris6k'):
 		path = 'dataset/' + dataset + '/query'
 		if (not full):
@@ -250,17 +250,32 @@ def write_results(url, queryImages,i, distances, DbImages, dataset, largeScaleRe
 				file_query.write(os.path.basename(DbImages[elem[0]])[:-4])
 			file_query.write("\n")
 		file_query.close()
+	elif (dataset=='holidays'):
+		file_query  = open(url, "a")
+		queryName = os.path.basename(queryImages[i])
+		file_query.write(queryName)
+		for i,elem in enumerate(distances,0):
+			if (elem[0]<991):
+				value = os.path.basename(DbImages[elem[0]])
+				if (queryName[:4]==value[:4]):
+					file_query.write(" "+str(i)+" "+str(os.path.basename(DbImages[elem[0]])))
+		file_query.write("\n")
+		file_query.close()
 
 	return
 
 def calcResults(dataset, url):
 	if (dataset=='paris6k' or dataset=='oxford5k'):
 		os.system("results/"+dataset+"/compute_ap_all_2 "+url)
+	elif (dataset=='holidays'):
+		os.system("python2 dataset/Holidays/holidays_map_single.py "+url)
 	return
 
 def retrieve(queryMAC, DbMAC, topResultsQE, url, queryImages, DbImages, dataset, largeScaleRetrieval=False):
-
-	if (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
+	if (dataset=='holidays'):
+		file_query  = open(url, "w")
+		file_query.close()
+	elif (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
 		shutil.rmtree(url)
 
 	reRank = []
@@ -282,8 +297,10 @@ def retrieve(queryMAC, DbMAC, topResultsQE, url, queryImages, DbImages, dataset,
 	return reRank
 
 def retrieveRegionsNEW(queryMAC, regions, topResultsQE,url, queryImages, DbImages, dataset, largeScaleRetrieval=False):
-
-	if (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
+	if (dataset=='holidays'):
+		file_query  = open(url, "w")
+		file_query.close()
+	elif (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
 		shutil.rmtree(url)
 
 	reRank = []
@@ -314,7 +331,10 @@ def retrieveRegionsNEW(queryMAC, regions, topResultsQE,url, queryImages, DbImage
 def retrieveQE(queryMAC, DbMAC, topResultsQE, url, queryImages, DbImages, reRank, dataset, largeScaleRetrieval=False):
 
 	url += '_avgQE'
-	if (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
+	if (dataset=='holidays'):
+		file_query  = open(url, "w")
+		file_query.close()
+	elif (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
 		shutil.rmtree(url)
 
 	finalReRank = []
@@ -341,7 +361,10 @@ def retrieveQE(queryMAC, DbMAC, topResultsQE, url, queryImages, DbImages, reRank
 def retrieveQERegionsNEW(queryMAC, regions, topResultsQE, url, queryImages, DbImages, reRank, dataset, largeScaleRetrieval=False):
 
 	url += '_avgQE'
-	if (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
+	if (dataset=='holidays'):
+		file_query  = open(url, "w")
+		file_query.close()
+	elif (os.path.exists(url) and (dataset=='paris6k' or dataset=='oxford5k')):
 		shutil.rmtree(url)
 
 	finalReRank = []
