@@ -19,6 +19,7 @@ The pipeline was tested with VGG16 and ResNet50. For the VGG16 the best performa
 It is possible to try with other networks. Please before to try it, check if there are available the Keras weight for the selected network.
 
 ## Datasets
+* Holidays
 * Oxford5k
 * Paris6k
 
