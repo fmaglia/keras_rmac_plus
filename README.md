@@ -41,7 +41,7 @@ Download the datasets and put it into the data folder. Then compile the script f
 The R-MAC is an our re-implementation of the Tolias et al. 2016 paper, instead M-R RMAC comes from the Gordo et al. 2016 paper.
 The last two experiments are also executed on the rotated version of Holidays.
 
-## Reference
+## References
 
 <pre>@article{magliani2018accurate,
   title={An accurate retrieval through R-MAC+ descriptors for landmark recognition},
